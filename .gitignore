@@ -12,6 +12,8 @@
 /captures
 .externalNativeBuild
 .cxx
+app/release/
 
 .idea
+.key
 
