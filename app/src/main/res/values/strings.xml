@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">unlock</string>
+    <string name="api_key_label">API key</string>
+    <string name="access_url_label">Access URL</string>
+</resources>
