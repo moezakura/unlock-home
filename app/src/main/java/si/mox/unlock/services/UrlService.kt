@@ -8,8 +8,8 @@ class UrlService {
             return "${baseURL}?token=${token}"
         }
 
-        fun apiURL(token: String): String {
-            return "${baseURL}?token=${token}&is_door=true"
+        fun apiURL(token: String, isDoor: Boolean): String {
+            return "${baseURL}?token=${token}&is_door=${isDoor}"
         }
     }
 }
