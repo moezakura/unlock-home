@@ -2,4 +2,7 @@
     <string name="app_name">unlock</string>
     <string name="api_key_label">API key</string>
     <string name="access_url_label">Access URL</string>
+    <string name="unlock_all">ALL</string>
+    <string name="unlock_entrance">ENTRANCE</string>
+    <string name="unlock">Unlock</string>
 </resources>
