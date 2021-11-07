@@ -1,6 +1,7 @@
 package si.mox.unlock.services
 
 import android.os.Build
+import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import androidx.annotation.RequiresApi
 import kotlinx.coroutines.GlobalScope
@@ -13,6 +14,8 @@ class UnlockTileService : TileService() {
 
     // Quick SettingsにTileが追加されるときに呼び出されます
     override fun onTileAdded() {
+        qsTile.state = Tile.STATE_INACTIVE
+        qsTile.updateTile()
     }
 
     // Quick SettingsにTileが削除されるときに呼び出されます
@@ -29,6 +32,9 @@ class UnlockTileService : TileService() {
 
     // Tileをクリックしたときに呼び出されます
     override fun onClick() {
+        qsTile.state = Tile.STATE_ACTIVE
+        qsTile.updateTile()
+
         val secretStorage = SecretStorage()
         val secret = secretStorage.load(this)
         if (secret == null) {
@@ -38,6 +44,9 @@ class UnlockTileService : TileService() {
         val client = Client(secret.apiKey)
         GlobalScope.launch {
             client.unlock()
+
+            qsTile.state = Tile.STATE_INACTIVE
+            qsTile.updateTile()
         }
     }
 
